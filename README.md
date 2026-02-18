@@ -16,6 +16,11 @@ php artisan vendor:publish --tag=meta-ads-migrations
 php artisan migrate
 ```
 
+## Requirements
+
+- Laravel 10, 11, or 12
+- PHP 8.1+ (Laravel 12 requires PHP 8.2+)
+
 ## Environment
 
 ```dotenv
@@ -34,8 +39,8 @@ META_ADS_ALLOW_LOCAL=false
 Optional model/table overrides:
 
 ```dotenv
-META_ADS_LEAD_MODEL=App\\Models\\Lead
-META_ADS_ORDER_MODEL=App\\Models\\FrontOrder
+META_ADS_LEAD_MODEL=App\Models\Lead
+META_ADS_ORDER_MODEL=App\Models\FrontOrder
 META_ADS_LEADS_TABLE=leads
 META_ADS_ORDERS_TABLE=front_orders
 META_ADS_ORDER_TOTAL_FIELD=total_amount
@@ -104,4 +109,3 @@ Tables:
 ## License
 
 MIT
-
