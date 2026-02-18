@@ -56,7 +56,7 @@ Leads table:
 - `meta_campaign_id`, `meta_ad_set_id`, `meta_ad_id`
 - `meta_conversion_sent_at`, `meta_conversion_error`
 
-These are created by the published migrations. If your project already has a leads table, the create migration will skip it.
+These are created by the published migrations. If your project already has a leads table, the migration will add any missing Meta fields.
 
 ## Conversions (CAPI)
 
