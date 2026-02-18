@@ -21,9 +21,5 @@ return [
     'allow_local' => env('META_ADS_ALLOW_LOCAL', false),
 
     'lead_model' => env('META_ADS_LEAD_MODEL', App\Models\Lead::class),
-    'order_model' => env('META_ADS_ORDER_MODEL', App\Models\FrontOrder::class),
     'leads_table' => env('META_ADS_LEADS_TABLE', 'leads'),
-    'orders_table' => env('META_ADS_ORDERS_TABLE', 'front_orders'),
-    'order_total_field' => env('META_ADS_ORDER_TOTAL_FIELD', 'total_amount'),
-    'order_lead_key' => env('META_ADS_ORDER_LEAD_KEY', 'lead_id'),
 ];

@@ -48,11 +48,7 @@ Optional model/table overrides:
 
 ```dotenv
 META_ADS_LEAD_MODEL=App\Models\Lead
-META_ADS_ORDER_MODEL=App\Models\FrontOrder
 META_ADS_LEADS_TABLE=leads
-META_ADS_ORDERS_TABLE=front_orders
-META_ADS_ORDER_TOTAL_FIELD=total_amount
-META_ADS_ORDER_LEAD_KEY=lead_id
 ```
 
 ## Required Lead/Order Columns
@@ -61,10 +57,6 @@ Leads table:
 - `fbclid`, `fbc`, `fbp`
 - `meta_campaign_id`, `meta_ad_set_id`, `meta_ad_id`
 - `meta_conversion_sent_at`, `meta_conversion_error`
-
-Orders table:
-- `fbclid`, `fbc`, `fbp`
-- `meta_campaign_id`, `meta_ad_set_id`, `meta_ad_id`
 
 These are created by the published migrations.
 
@@ -80,7 +72,6 @@ SendMetaAdsConversionJob::dispatch($lead->id)->delay(now()->addSeconds(5));
 
 Behavior:
 - Event id uses `lead-{id}`.
-- If an order exists for the lead, `custom_data.value` uses order total and `order_id` uses `order-{id}`.
 - `meta_conversion_sent_at` is set only when Meta responds with `events_received >= 1`.
 
 Enable local testing with:

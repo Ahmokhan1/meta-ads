@@ -67,16 +67,6 @@ class SendMetaAdsConversionJob implements ShouldQueue
         $conversionValue = (float) config('meta_ads.conversion_value', 0);
         $orderId = 'lead-' . $lead->id;
 
-        $frontOrder = $this->resolveOrder($lead);
-        if ($frontOrder) {
-            $totalField = (string) config('meta_ads.order_total_field', 'total_amount');
-            $total = data_get($frontOrder, $totalField);
-            if (is_numeric($total)) {
-                $conversionValue = (float) $total;
-                $orderId = 'order-' . $frontOrder->id;
-            }
-        }
-
         $conversionTime = !empty($lead->enrolment_date)
             ? Carbon::parse($lead->enrolment_date)->startOfDay()
             : (!empty($lead->created_at) ? Carbon::parse($lead->created_at) : now());
@@ -142,20 +132,6 @@ class SendMetaAdsConversionJob implements ShouldQueue
 
             throw $e;
         }
-    }
-
-    private function resolveOrder($lead)
-    {
-        $orderClass = config('meta_ads.order_model');
-        if (!$orderClass || !class_exists($orderClass)) {
-            return null;
-        }
-
-        $leadKey = (string) config('meta_ads.order_lead_key', 'lead_id');
-        return $orderClass::query()
-            ->where($leadKey, $lead->id)
-            ->orderByDesc('id')
-            ->first();
     }
 
     private function saveLeadError($lead, string $message): void
