@@ -26,10 +26,6 @@ class MetaAdsServiceProvider extends ServiceProvider
             __DIR__ . '/../stubs/Models/Lead.php' => app_path('Models/Lead.php'),
         ], 'meta-ads-models');
 
-        $this->publishes([
-            __DIR__ . '/../stubs/migrations/2026_02_18_000000_create_leads_table.php' => database_path('migrations/2026_02_18_000000_create_leads_table.php'),
-        ], 'meta-ads-demo-migrations');
-
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         if ($this->app->runningInConsole()) {

@@ -8,7 +8,13 @@ class CreateLeadsTable extends Migration
 {
     public function up()
     {
-        Schema::create('leads', function (Blueprint $table) {
+        $leadsTable = config('meta_ads.leads_table', 'leads');
+
+        if (Schema::hasTable($leadsTable)) {
+            return;
+        }
+
+        Schema::create($leadsTable, function (Blueprint $table) {
             $table->id();
             $table->string('candidate_name')->nullable();
             $table->string('contact_number')->nullable();
@@ -38,6 +44,8 @@ class CreateLeadsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('leads');
+        $leadsTable = config('meta_ads.leads_table', 'leads');
+
+        Schema::dropIfExists($leadsTable);
     }
 }

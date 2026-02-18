@@ -16,12 +16,10 @@ php artisan vendor:publish --tag=meta-ads-migrations
 php artisan migrate
 ```
 
-Fresh Laravel (no Lead model yet):
+Optional Lead model stub:
 
 ```bash
 php artisan vendor:publish --tag=meta-ads-models
-php artisan vendor:publish --tag=meta-ads-demo-migrations
-php artisan migrate
 ```
 
 ## Requirements
@@ -58,7 +56,7 @@ Leads table:
 - `meta_campaign_id`, `meta_ad_set_id`, `meta_ad_id`
 - `meta_conversion_sent_at`, `meta_conversion_error`
 
-These are created by the published migrations.
+These are created by the published migrations. If your project already has a leads table, the create migration will skip it.
 
 ## Conversions (CAPI)
 
