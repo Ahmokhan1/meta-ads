@@ -1,6 +1,6 @@
 <?php
 
-namespace T4E\MetaAds\Models;
+namespace Ahmokhan1\MetaAds\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -27,3 +27,5 @@ class MetaAdsAccount extends Model
         return $this->hasMany(MetaAdsCampaign::class, 'account_id');
     }
 }
+
+

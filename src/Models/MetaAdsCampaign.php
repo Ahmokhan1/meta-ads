@@ -1,6 +1,6 @@
 <?php
 
-namespace T4E\MetaAds\Models;
+namespace Ahmokhan1\MetaAds\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -34,3 +34,5 @@ class MetaAdsCampaign extends Model
         return $this->hasMany(MetaAdsMetricDaily::class, 'campaign_id');
     }
 }
+
+

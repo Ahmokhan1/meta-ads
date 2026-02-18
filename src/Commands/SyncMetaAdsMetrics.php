@@ -1,11 +1,11 @@
 <?php
 
-namespace T4E\MetaAds\Commands;
+namespace Ahmokhan1\MetaAds\Commands;
 
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Throwable;
-use T4E\MetaAds\Services\MetaAdsSyncService;
+use Ahmokhan1\MetaAds\Services\MetaAdsSyncService;
 
 class SyncMetaAdsMetrics extends Command
 {
@@ -47,3 +47,5 @@ class SyncMetaAdsMetrics extends Command
         return [$from->startOfDay(), $to->endOfDay()];
     }
 }
+
+

@@ -1,11 +1,11 @@
-# T4E Meta Ads (CAPI + Insights)
+# Meta Ads (CAPI + Insights)
 
 Laravel package for Meta Conversions API uploads and Marketing API insights sync.
 
 ## Install
 
 ```bash
-composer require t4e/meta-ads
+composer require ahmokhan1/meta-ads
 ```
 
 Publish config and migrations:
@@ -60,7 +60,7 @@ These are created by the published migrations.
 Dispatch after a lead is enrolled/created:
 
 ```php
-use T4E\MetaAds\Jobs\SendMetaAdsConversionJob;
+use Ahmokhan1\MetaAds\Jobs\SendMetaAdsConversionJob;
 
 SendMetaAdsConversionJob::dispatch($lead->id)->delay(now()->addSeconds(5));
 ```
@@ -104,3 +104,4 @@ Tables:
 ## License
 
 MIT
+

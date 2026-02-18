@@ -1,9 +1,9 @@
 <?php
 
-namespace T4E\MetaAds;
+namespace Ahmokhan1\MetaAds;
 
 use Illuminate\Support\ServiceProvider;
-use T4E\MetaAds\Commands\SyncMetaAdsMetrics;
+use Ahmokhan1\MetaAds\Commands\SyncMetaAdsMetrics;
 
 class MetaAdsServiceProvider extends ServiceProvider
 {
@@ -31,3 +31,5 @@ class MetaAdsServiceProvider extends ServiceProvider
         }
     }
 }
+
+

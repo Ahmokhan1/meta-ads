@@ -1,6 +1,6 @@
 <?php
 
-namespace T4E\MetaAds\Jobs;
+namespace Ahmokhan1\MetaAds\Jobs;
 
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
@@ -10,7 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 use Throwable;
-use T4E\MetaAds\Services\MetaAdsApiClient;
+use Ahmokhan1\MetaAds\Services\MetaAdsApiClient;
 
 class SendMetaAdsConversionJob implements ShouldQueue
 {
@@ -259,3 +259,5 @@ class SendMetaAdsConversionJob implements ShouldQueue
         return [$first, $last];
     }
 }
+
+

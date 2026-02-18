@@ -1,12 +1,12 @@
 <?php
 
-namespace T4E\MetaAds\Services;
+namespace Ahmokhan1\MetaAds\Services;
 
 use Carbon\Carbon;
 use RuntimeException;
-use T4E\MetaAds\Models\MetaAdsAccount;
-use T4E\MetaAds\Models\MetaAdsCampaign;
-use T4E\MetaAds\Models\MetaAdsMetricDaily;
+use Ahmokhan1\MetaAds\Models\MetaAdsAccount;
+use Ahmokhan1\MetaAds\Models\MetaAdsCampaign;
+use Ahmokhan1\MetaAds\Models\MetaAdsMetricDaily;
 
 class MetaAdsSyncService
 {
@@ -129,3 +129,5 @@ class MetaAdsSyncService
         return $digits ? 'act_' . $digits : $normalized;
     }
 }
+
+

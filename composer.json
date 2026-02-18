@@ -1,5 +1,5 @@
 {
-  "name": "t4e/meta-ads",
+  "name": "ahmokhan1/meta-ads",
   "description": "Meta Ads (CAPI + Insights) integration for Laravel CRM",
   "type": "library",
   "license": "MIT",
@@ -15,13 +15,13 @@
   },
   "autoload": {
     "psr-4": {
-      "T4E\\MetaAds\\": "src/"
+      "Ahmokhan1\\MetaAds\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "T4E\\MetaAds\\MetaAdsServiceProvider"
+        "Ahmokhan1\\MetaAds\\MetaAdsServiceProvider"
       ]
     }
   },
