@@ -16,7 +16,7 @@ php artisan vendor:publish --tag=meta-ads-migrations
 php artisan migrate
 ```
 
-Fresh Laravel (no Lead/FrontOrder models yet):
+Fresh Laravel (no Lead model yet):
 
 ```bash
 php artisan vendor:publish --tag=meta-ads-models
