@@ -12,8 +12,12 @@ class AddMetaAdsFieldsToLeadsAndFrontOrders extends Migration
         $ordersTable = config('meta_ads.orders_table', 'front_orders');
 
         if (Schema::hasTable($leadsTable)) {
-            Schema::table($leadsTable, function (Blueprint $table) {
-                $table->string('fbclid', 255)->nullable()->after('google_conversion_error');
+            $afterGoogleError = Schema::hasColumn($leadsTable, 'google_conversion_error');
+            Schema::table($leadsTable, function (Blueprint $table) use ($afterGoogleError) {
+                $fbclid = $table->string('fbclid', 255)->nullable();
+                if ($afterGoogleError) {
+                    $fbclid->after('google_conversion_error');
+                }
                 $table->string('fbc', 255)->nullable()->after('fbclid');
                 $table->string('fbp', 255)->nullable()->after('fbc');
                 $table->string('meta_campaign_id', 64)->nullable()->after('fbp');
@@ -29,8 +33,12 @@ class AddMetaAdsFieldsToLeadsAndFrontOrders extends Migration
         }
 
         if (Schema::hasTable($ordersTable)) {
-            Schema::table($ordersTable, function (Blueprint $table) {
-                $table->string('fbclid', 255)->nullable()->after('google_keyword');
+            $afterGoogleKeyword = Schema::hasColumn($ordersTable, 'google_keyword');
+            Schema::table($ordersTable, function (Blueprint $table) use ($afterGoogleKeyword) {
+                $fbclid = $table->string('fbclid', 255)->nullable();
+                if ($afterGoogleKeyword) {
+                    $fbclid->after('google_keyword');
+                }
                 $table->string('fbc', 255)->nullable()->after('fbclid');
                 $table->string('fbp', 255)->nullable()->after('fbc');
                 $table->string('meta_campaign_id', 64)->nullable()->after('fbp');
@@ -50,38 +58,56 @@ class AddMetaAdsFieldsToLeadsAndFrontOrders extends Migration
         $ordersTable = config('meta_ads.orders_table', 'front_orders');
 
         if (Schema::hasTable($leadsTable)) {
-            Schema::table($leadsTable, function (Blueprint $table) {
-                $table->dropIndex(['fbclid']);
-                $table->dropIndex(['fbc']);
-                $table->dropIndex(['meta_campaign_id']);
-                $table->dropIndex(['meta_ad_set_id']);
-                $table->dropIndex(['meta_ad_id']);
+            Schema::table($leadsTable, function (Blueprint $table) use ($leadsTable) {
+                if (Schema::hasColumn($leadsTable, 'fbclid')) {
+                    $table->dropIndex(['fbclid']);
+                }
+                if (Schema::hasColumn($leadsTable, 'fbc')) {
+                    $table->dropIndex(['fbc']);
+                }
+                if (Schema::hasColumn($leadsTable, 'meta_campaign_id')) {
+                    $table->dropIndex(['meta_campaign_id']);
+                }
+                if (Schema::hasColumn($leadsTable, 'meta_ad_set_id')) {
+                    $table->dropIndex(['meta_ad_set_id']);
+                }
+                if (Schema::hasColumn($leadsTable, 'meta_ad_id')) {
+                    $table->dropIndex(['meta_ad_id']);
+                }
 
-                $table->dropColumn([
-                    'fbclid',
-                    'fbc',
-                    'fbp',
-                    'meta_campaign_id',
-                    'meta_ad_set_id',
-                    'meta_ad_id',
-                ]);
+                $dropColumns = [];
+                foreach (['fbclid', 'fbc', 'fbp', 'meta_campaign_id', 'meta_ad_set_id', 'meta_ad_id'] as $col) {
+                    if (Schema::hasColumn($leadsTable, $col)) {
+                        $dropColumns[] = $col;
+                    }
+                }
+                if ($dropColumns) {
+                    $table->dropColumn($dropColumns);
+                }
             });
         }
 
         if (Schema::hasTable($ordersTable)) {
-            Schema::table($ordersTable, function (Blueprint $table) {
-                $table->dropIndex(['fbclid']);
-                $table->dropIndex(['fbc']);
-                $table->dropIndex(['meta_campaign_id']);
+            Schema::table($ordersTable, function (Blueprint $table) use ($ordersTable) {
+                if (Schema::hasColumn($ordersTable, 'fbclid')) {
+                    $table->dropIndex(['fbclid']);
+                }
+                if (Schema::hasColumn($ordersTable, 'fbc')) {
+                    $table->dropIndex(['fbc']);
+                }
+                if (Schema::hasColumn($ordersTable, 'meta_campaign_id')) {
+                    $table->dropIndex(['meta_campaign_id']);
+                }
 
-                $table->dropColumn([
-                    'fbclid',
-                    'fbc',
-                    'fbp',
-                    'meta_campaign_id',
-                    'meta_ad_set_id',
-                    'meta_ad_id',
-                ]);
+                $dropColumns = [];
+                foreach (['fbclid', 'fbc', 'fbp', 'meta_campaign_id', 'meta_ad_set_id', 'meta_ad_id'] as $col) {
+                    if (Schema::hasColumn($ordersTable, $col)) {
+                        $dropColumns[] = $col;
+                    }
+                }
+                if ($dropColumns) {
+                    $table->dropColumn($dropColumns);
+                }
             });
         }
     }

@@ -16,6 +16,14 @@ php artisan vendor:publish --tag=meta-ads-migrations
 php artisan migrate
 ```
 
+Fresh Laravel (no Lead/FrontOrder models yet):
+
+```bash
+php artisan vendor:publish --tag=meta-ads-models
+php artisan vendor:publish --tag=meta-ads-demo-migrations
+php artisan migrate
+```
+
 ## Requirements
 
 - Laravel 10, 11, or 12

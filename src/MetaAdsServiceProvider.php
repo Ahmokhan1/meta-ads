@@ -22,6 +22,16 @@ class MetaAdsServiceProvider extends ServiceProvider
             __DIR__ . '/../database/migrations' => database_path('migrations'),
         ], 'meta-ads-migrations');
 
+        $this->publishes([
+            __DIR__ . '/../stubs/Models/Lead.php' => app_path('Models/Lead.php'),
+            __DIR__ . '/../stubs/Models/FrontOrder.php' => app_path('Models/FrontOrder.php'),
+        ], 'meta-ads-models');
+
+        $this->publishes([
+            __DIR__ . '/../stubs/migrations/2026_02_18_000000_create_leads_table.php' => database_path('migrations/2026_02_18_000000_create_leads_table.php'),
+            __DIR__ . '/../stubs/migrations/2026_02_18_000010_create_front_orders_table.php' => database_path('migrations/2026_02_18_000010_create_front_orders_table.php'),
+        ], 'meta-ads-demo-migrations');
+
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         if ($this->app->runningInConsole()) {
