@@ -19,10 +19,6 @@ class CreateLeadsTable extends Migration
             $table->string('candidate_name')->nullable();
             $table->string('contact_number')->nullable();
             $table->string('email')->nullable();
-            $table->string('course_interested')->nullable();
-            $table->json('course_ids')->nullable();
-            $table->date('enrolment_date')->nullable();
-
             $table->string('fbclid', 255)->nullable();
             $table->string('fbc', 255)->nullable();
             $table->string('fbp', 255)->nullable();

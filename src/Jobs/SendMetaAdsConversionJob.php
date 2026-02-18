@@ -83,24 +83,6 @@ class SendMetaAdsConversionJob implements ShouldQueue
             'order_id' => $orderId,
         ];
 
-        $courseName = data_get($lead, 'course_interested');
-        if ($courseName) {
-            $customData['content_name'] = $courseName;
-        }
-
-        $courseIds = data_get($lead, 'course_ids');
-        if (is_string($courseIds)) {
-            $decoded = json_decode($courseIds, true);
-            if (is_array($decoded)) {
-                $courseIds = $decoded;
-            }
-        }
-
-        if (is_array($courseIds) && $courseIds) {
-            $customData['content_ids'] = array_map('strval', $courseIds);
-            $customData['content_type'] = 'product';
-        }
-
         $event = [
             'event_name' => $eventName,
             'event_time' => $conversionTime->timestamp,

@@ -10,9 +10,6 @@ class Lead extends Model
         'candidate_name',
         'contact_number',
         'email',
-        'course_interested',
-        'course_ids',
-        'enrolment_date',
         'fbclid',
         'fbc',
         'fbp',
@@ -24,8 +21,6 @@ class Lead extends Model
     ];
 
     protected $casts = [
-        'course_ids' => 'array',
-        'enrolment_date' => 'date',
         'meta_conversion_sent_at' => 'datetime',
     ];
 }

@@ -49,7 +49,7 @@ META_ADS_LEAD_MODEL=App\Models\Lead
 META_ADS_LEADS_TABLE=leads
 ```
 
-## Required Lead/Order Columns
+## Required Lead Columns
 
 Leads table:
 - `fbclid`, `fbc`, `fbp`
